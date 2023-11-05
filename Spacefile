@@ -1,0 +1,18 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: potionsmart
+    src: ./
+    engine: python3.9
+    primary: true
+    run: uvicorn src.api.server:app
+    public_routes:
+      - "/*"
+    presets:
+      env:
+        - name: API_KEY
+          description: Secret message only available to this Micro
+          default: "deta"
+        - name: POSTGRES_URI
+          description: Secret message only available to this Micro
+          default: "deta"
