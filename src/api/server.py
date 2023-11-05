@@ -1,11 +1,10 @@
 from fastapi import FastAPI, exceptions
 from fastapi.responses import JSONResponse
 from pydantic import ValidationError
-from src.api import audit, carts, catalog, bottler, admin, hello
+from src.api import hello
 import json
 import logging
 import sys
-from starlette.middleware.cors import CORSMiddleware
 
 description = """
 A not very secure web service
