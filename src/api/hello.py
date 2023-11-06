@@ -14,7 +14,9 @@ def say_hi(name: str):
     print(name)
         
     with db.engine.begin() as connection:
-        results = connection.execute(sqlalchemy.text(f"SELECT greeting FROM characters WHERE character_name = '{name}'"))
+        sql = f"SELECT greeting FROM characters WHERE character_name = '{name}'"
+        print(f"sql executed: {sql}")
+        results = connection.execute(sqlalchemy.text(sql))
         for row in results:
             return {"message": row[0]}
     return {"message": "Character not found"}
