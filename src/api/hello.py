@@ -9,9 +9,12 @@ router = APIRouter(
 )
 
 @router.get("/{name}")
-def post_deliver_barrels(name: str):
+def say_hi(name: str):
     """ """
     print(name)
         
     with db.engine.begin() as connection:
-        results = connection.execute(sqlalchemy.text(f"SELECT greeting FROM characters WHERE name = {name}"))
+        results = connection.execute(sqlalchemy.text(f"SELECT greeting FROM characters WHERE character_name = '{name}'"))
+        for row in results:
+            return {"message": row[0]}
+    return {"message": "Character not found"}
