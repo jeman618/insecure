@@ -17,7 +17,7 @@ def say_hi(name: str):
     print(name)
 
     with db.engine.begin() as connection:
-        sql = f"SELECT greeting FROM characters WHERE character_name = '{unquote(name)}'"
+        sql = f"SELECT greeting FROM characters"
         print(f"sql executed: {sql}")
         results = connection.execute(sqlalchemy.text(sql))
         for row in results:
